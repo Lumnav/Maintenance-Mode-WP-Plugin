@@ -4,6 +4,7 @@
  * Description: A maintenance mode plugin with a simple on/off toggle in the admin bar.
  * Version: 1.0.0
  * Author: Lumnav
+ * Author URI: https://lumnav.com
  * License: GPL-2.0+
  */
 
@@ -89,7 +90,7 @@ function lumnav_mm_check_status() {
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale-1.0">
         <title>Under Maintenance</title>
         <style>
             body { text-align: center; padding: 150px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f1f1; color: #444; }
