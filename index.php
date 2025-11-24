@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: My New Plugin
+ * Plugin Name: Maintenance Mode
  * Description: A maintenance mode plugin with a simple on/off toggle in the admin bar.
  * Version: 1.0.0
  * Author: Your Name
