@@ -164,10 +164,28 @@ class GitHub_Updater
     {
         global $wp_filesystem;
 
-        $install_directory = plugin_dir_path($this->file);
-        $wp_filesystem->move($result['destination'], $install_directory);
-        $result['destination'] = $install_directory;
+        // Get the plugin directory name (e.g., "Maintenance Mode")
+        $plugin_dir = dirname($this->file);
+        $plugin_folder = basename($plugin_dir);
 
+        // The destination where WordPress extracted the update
+        $destination = $result['destination'];
+
+        // WordPress expects the folder to be named correctly
+        $proper_destination = dirname($destination) . '/' . $plugin_folder;
+
+        // Remove old plugin directory if it exists
+        if ($wp_filesystem->exists($proper_destination)) {
+            $wp_filesystem->delete($proper_destination, true);
+        }
+
+        // Move the extracted folder to the proper location
+        $wp_filesystem->move($destination, $proper_destination);
+
+        // Update the result to point to the correct location
+        $result['destination'] = $proper_destination;
+
+        // Reactivate the plugin if it was active before
         if ($this->active) {
             activate_plugin($this->basename);
         }
