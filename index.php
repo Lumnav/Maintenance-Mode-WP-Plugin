@@ -112,119 +112,121 @@ function lumnav_mm_render_settings_page()
             <?php settings_fields('lumnav_mm_settings_group'); ?>
             <div class="lumnav-mm-style-grid">
 
-                <!-- Simple Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="simple" <?php checked($current_style, 'simple'); ?> />
+                <!-- Simple -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="simple" <?php checked($current_style, 'simple'); ?>>
                     <div class="preview-container">
-                        <div class="preview simple-preview">
-                            <div class="simple-box">
-                                <h3>We’ll be back soon!</h3>
-                                <p>Performing some maintenance...</p>
-                            </div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=simple'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Simple</div>
                     </div>
                 </label>
 
-                <!-- High-Tech Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="hightech" <?php checked($current_style, 'hightech'); ?> />
+                <!-- High-Tech -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="hightech" <?php checked($current_style, 'hightech'); ?>>
                     <div class="preview-container">
-                        <div class="preview hightech-preview">
-                            <div class="hightech-box">
-                                <h3>SYSTEM MAINTENANCE</h3>
-                                <p>&gt; Recalibrating...</p>
-                            </div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=hightech'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">High-Tech</div>
                     </div>
                 </label>
 
-                <!-- Artistic Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="artistic" <?php checked($current_style, 'artistic'); ?> />
+                <!-- Artistic -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="artistic" <?php checked($current_style, 'artistic'); ?>>
                     <div class="preview-container">
-                        <div class="preview artistic-preview">
-                            <div class="artistic-box">
-                                <span><?php echo esc_html(preg_replace('/^www\./', '', wp_parse_url(home_url(), PHP_URL_HOST))); ?></span>
-                            </div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=artistic'); ?>"
+                                scrolling="no"></iframe>
                         </div>
-                        <div class="card-title">Artistic (Premium)</div>
+                        <div class="card-title">Artistic</div>
                     </div>
                 </label>
 
-                <!-- Glassmorphic Gradient Mesh Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="glassmorphic" <?php checked($current_style, 'glassmorphic'); ?> />
+                <!-- Glassmorphic -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="glassmorphic" <?php checked($current_style, 'glassmorphic'); ?>>
                     <div class="preview-container">
-                        <div class="preview glassmorphic-preview">
-                            <div class="glass-card">✨ Premium</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=glassmorphic'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Glassmorphic</div>
                     </div>
                 </label>
 
-                <!-- Neural Network Particles Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="neural" <?php checked($current_style, 'neural'); ?> />
+                <!-- Neural Network -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="neural" <?php checked($current_style, 'neural'); ?>>
                     <div class="preview-container">
-                        <div class="preview neural-preview">
-                            <div class="neural-dots">● ● ●</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=neural'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Neural Network</div>
                     </div>
                 </label>
 
-                <!-- Liquid Morphing Blobs Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="liquid" <?php checked($current_style, 'liquid'); ?> />
+                <!-- Liquid Morphing -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="liquid" <?php checked($current_style, 'liquid'); ?>>
                     <div class="preview-container">
-                        <div class="preview liquid-preview">
-                            <div class="liquid-blob"></div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=liquid'); ?>"
+                                scrolling="no"></iframe>
                         </div>
-                        <div class="card-title">Liquid Blobs</div>
+                        <div class="card-title">Liquid Morphing</div>
                     </div>
                 </label>
 
-                <!-- 3D Geometric Torus Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="torus" <?php checked($current_style, 'torus'); ?> />
+                <!-- 3D Torus -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="torus" <?php checked($current_style, 'torus'); ?>>
                     <div class="preview-container">
-                        <div class="preview torus-preview">
-                            <div class="torus-icon">◯</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=torus'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">3D Torus</div>
                     </div>
                 </label>
 
-                <!-- Kinetic Typography Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="kinetic" <?php checked($current_style, 'kinetic'); ?> />
+                <!-- Kinetic Typography -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="kinetic" <?php checked($current_style, 'kinetic'); ?>>
                     <div class="preview-container">
-                        <div class="preview kinetic-preview">
-                            <div class="kinetic-text">BOLD</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=kinetic'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Kinetic Type</div>
                     </div>
                 </label>
 
-                <!-- Aurora Borealis Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="aurora" <?php checked($current_style, 'aurora'); ?> />
+                <!-- Aurora Borealis -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="aurora" <?php checked($current_style, 'aurora'); ?>>
                     <div class="preview-container">
-                        <div class="preview aurora-preview">
-                            <div class="aurora-waves">~</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=aurora'); ?>"
+                                scrolling="no"></iframe>
                         </div>
-                        <div class="card-title">Aurora</div>
+                        <div class="card-title">Aurora Borealis</div>
                     </div>
                 </label>
 
-                <!-- Holographic Interface Style -->
-                <label class="lumnav-mm-style-card">
-                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="holographic" <?php checked($current_style, 'holographic'); ?> />
+                <!-- Holographic -->
+                <label>
+                    <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="holographic" <?php checked($current_style, 'holographic'); ?>>
                     <div class="preview-container">
-                        <div class="preview holographic-preview">
-                            <div class="holo-text">HOLO</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=holographic'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Holographic</div>
                     </div>
@@ -234,8 +236,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="neon" <?php checked($current_style, 'neon'); ?>>
                     <div class="preview-container">
-                        <div class="preview neon-preview">
-                            <div class="neon-text">NEON</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=neon'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Neon Cyberpunk</div>
                     </div>
@@ -245,8 +248,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="swiss" <?php checked($current_style, 'swiss'); ?>>
                     <div class="preview-container">
-                        <div class="preview swiss-preview">
-                            <div class="swiss-text">SWISS</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=swiss'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Minimalist Swiss</div>
                     </div>
@@ -256,8 +260,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="vhs" <?php checked($current_style, 'vhs'); ?>>
                     <div class="preview-container">
-                        <div class="preview vhs-preview">
-                            <div class="vhs-text">VHS</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=vhs'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Retro VHS</div>
                     </div>
@@ -267,8 +272,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="brutalist" <?php checked($current_style, 'brutalist'); ?>>
                     <div class="preview-container">
-                        <div class="preview brutalist-preview">
-                            <div class="brutalist-text">BRUTAL</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=brutalist'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Brutalist Design</div>
                     </div>
@@ -278,8 +284,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="galaxy" <?php checked($current_style, 'galaxy'); ?>>
                     <div class="preview-container">
-                        <div class="preview galaxy-preview">
-                            <div class="galaxy-text">GALAXY</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=galaxy'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Cosmic Galaxy</div>
                     </div>
@@ -289,8 +296,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="matrix" <?php checked($current_style, 'matrix'); ?>>
                     <div class="preview-container">
-                        <div class="preview matrix-preview">
-                            <div class="matrix-text">MATRIX</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=matrix'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Matrix Code</div>
                     </div>
@@ -300,8 +308,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="vaporwave" <?php checked($current_style, 'vaporwave'); ?>>
                     <div class="preview-container">
-                        <div class="preview vaporwave-preview">
-                            <div class="vaporwave-text">VAPOR</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=vaporwave'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Vaporwave</div>
                     </div>
@@ -311,8 +320,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="particles" <?php checked($current_style, 'particles'); ?>>
                     <div class="preview-container">
-                        <div class="preview particles-preview">
-                            <div class="particles-text">PARTICLE</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=particles'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Particle Explosion</div>
                     </div>
@@ -322,8 +332,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="geometric" <?php checked($current_style, 'geometric'); ?>>
                     <div class="preview-container">
-                        <div class="preview geometric-preview">
-                            <div class="geometric-text">GEO</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=geometric'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Geometric Patterns</div>
                     </div>
@@ -333,8 +344,9 @@ function lumnav_mm_render_settings_page()
                 <label>
                     <input type="radio" name="<?php echo esc_attr(LUMNAV_MM_STYLE_OPTION); ?>" value="glitch" <?php checked($current_style, 'glitch'); ?>>
                     <div class="preview-container">
-                        <div class="preview glitch-preview">
-                            <div class="glitch-text">GLITCH</div>
+                        <div class="preview-iframe-wrapper">
+                            <iframe src="<?php echo home_url('?lumnav_mm_preview=true&style=glitch'); ?>"
+                                scrolling="no"></iframe>
                         </div>
                         <div class="card-title">Glitch Art</div>
                     </div>
@@ -352,17 +364,21 @@ function lumnav_mm_render_settings_page()
  */
 function lumnav_mm_check_status()
 {
-    $status = get_option(LUMNAV_MM_OPTION, 'off');
+    // Check for preview request
+    if (isset($_GET['lumnav_mm_preview']) && $_GET['lumnav_mm_preview'] === 'true' && current_user_can('manage_options')) {
+        $style = isset($_GET['style']) ? sanitize_key($_GET['style']) : 'simple';
+        // Proceed to render logic below with the requested style
+    } else {
+        // Normal maintenance mode check
+        if (!get_option(LUMNAV_MM_OPTION) || current_user_can('manage_options') || in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'), true)) {
+            return;
+        }
+        $style = get_option(LUMNAV_MM_STYLE_OPTION, 'simple');
 
-    if ($status !== 'on' || current_user_can('manage_options') || in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'), true)) {
-        return;
+        header('HTTP/1.1 503 Service Temporarily Unavailable');
+        header('Content-Type: text/html; charset=utf-8');
+        header('Retry-After: 3600');
     }
-
-    header('HTTP/1.1 503 Service Temporarily Unavailable');
-    header('Content-Type: text/html; charset=utf-8');
-    header('Retry-After: 3600');
-
-    $style = get_option(LUMNAV_MM_STYLE_OPTION, 'simple');
 
     if ($style === 'hightech') {
         lumnav_mm_render_hightech_page();
@@ -433,7 +449,7 @@ function lumnav_mm_render_simple_page()
 
             body {
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                background: #fafafa;
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
                 color: #222;
                 display: flex;
                 justify-content: center;
@@ -442,45 +458,65 @@ function lumnav_mm_render_simple_page()
                 padding: 20px
             }
 
-            . container {
+            .container {
                 text-align: center;
                 max-width: 900px;
-                width: 100%
+                width: 100%;
+                background: rgba(255, 255, 255, 0.6);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 60px 40px;
+                border-radius: 30px;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                animation: fadeIn 1s ease-out
             }
 
             .domain {
-                font-size: clamp(3rem, 8vw, 6rem);
-                font-weight: 700;
+                font-size: clamp(2.5rem, 8vw, 5.5rem);
+                font-weight: 800;
                 color: #111;
                 margin-bottom: 30px;
-                letter-spacing: -0.02em;
+                letter-spacing: -0.03em;
                 line-height: 1.1;
                 animation: fadeIn 0.8s ease-out
             }
 
             .tagline {
                 font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-                color: #666;
-                font-weight: 400;
+                color: #555;
+                font-weight: 500;
                 margin-bottom: 15px;
-                letter-spacing: 0.02em;
+                letter-spacing: -0.01em;
                 animation: fadeIn 1s ease-out 0.2s both
             }
 
             .message {
                 font-size: clamp(0.95rem, 2vw, 1.1rem);
-                color: #888;
+                color: #777;
                 max-width: 500px;
                 margin: 0 auto;
-                line-height: 1.6;
+                line-height: 1.7;
                 animation: fadeIn 1s ease-out 0.4s both
             }
 
             .divider {
-                width: 60px;
-                height: 2px;
-                background: #ddd;
-                margin: 25px auto
+                width: 0;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #222, transparent);
+                margin: 30px auto;
+                opacity: 0.2;
+                animation: expandWidth 1.2s ease-out 0.3s both
+            }
+
+            @keyframes expandWidth {
+                0% {
+                    width: 0;
+                }
+
+                100% {
+                    width: 100px;
+                }
             }
 
             @keyframes fadeIn {
@@ -496,6 +532,10 @@ function lumnav_mm_render_simple_page()
             }
 
             @media (max-width:600px) {
+                .container {
+                    padding: 40px 20px;
+                }
+
                 .domain {
                     margin-bottom: 20px
                 }
@@ -565,37 +605,42 @@ function lumnav_mm_render_hightech_page()
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, .03) 3px, rgba(0, 255, 0, .03) 4px);
-                animation: scan 8s linear infinite;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+                background-size: 100% 4px;
+                animation: scan 10s linear infinite;
                 pointer-events: none;
-                z-index: 10
+                z-index: 10;
+                opacity: 0.3;
             }
 
             @keyframes scan {
                 0% {
-                    transform: translateY(-10%)
+                    background-position: 0 0;
                 }
 
                 100% {
-                    transform: translateY(10%)
+                    background-position: 0 100%;
                 }
             }
 
             .container {
                 position: relative;
                 z-index: 2;
-                padding: 20px;
+                padding: 40px;
                 max-width: 95%;
-                border: 3px solid #00ff00;
-                box-shadow: 0 0 30px #00ff00, inset 0 0 30px rgba(0, 255, 0, .1);
-                background: rgba(0, 20, 0, .3);
+                border: 2px solid #00ff00;
+                box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), inset 0 0 40px rgba(0, 255, 0, 0.1);
+                background: rgba(0, 10, 0, 0.8);
+                backdrop-filter: blur(5px);
                 animation: flicker 4s infinite alternate
             }
 
             .border-art {
                 position: absolute;
-                top: -15px;
-                left: 20px;
+                top: -12px;
+                left: 30px;
+                background: #0a0a0a;
+                padding: 0 10px;
                 font-size: 14px;
                 color: #00ff00;
                 letter-spacing: 2px
@@ -606,21 +651,21 @@ function lumnav_mm_render_hightech_page()
                 0%,
                 100% {
                     opacity: 1;
-                    box-shadow: 0 0 30px #00ff00, inset 0 0 30px rgba(0, 255, 0, .1)
+                    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), inset 0 0 40px rgba(0, 255, 0, 0.1)
                 }
 
                 50% {
                     opacity: .95;
-                    box-shadow: 0 0 20px #00ff00, inset 0 0 20px rgba(0, 255, 0, .08)
+                    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1), inset 0 0 20px rgba(0, 255, 0, 0.05)
                 }
             }
 
             .domain {
-                font-size: clamp(2.5rem, 10vw, 7rem);
+                font-size: clamp(2rem, 10vw, 6rem);
                 font-weight: 700;
                 margin-bottom: 20px;
                 text-transform: uppercase;
-                letter-spacing: 8px;
+                letter-spacing: 4px;
                 animation: glitch 6s linear infinite, textGlow 2s ease-in-out infinite;
                 line-height: 1.1;
                 word-break: break-all
@@ -651,11 +696,11 @@ function lumnav_mm_render_hightech_page()
 
                 0%,
                 100% {
-                    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00
+                    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00
                 }
 
                 50% {
-                    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00
+                    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00
                 }
             }
 
@@ -664,7 +709,8 @@ function lumnav_mm_render_hightech_page()
                 margin-top: 25px;
                 letter-spacing: 4px;
                 text-transform: uppercase;
-                animation: blink 2s step-end infinite
+                animation: blink 2s step-end infinite;
+                text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
             }
 
             .prompt {
@@ -689,12 +735,45 @@ function lumnav_mm_render_hightech_page()
                 font-size: clamp(0.85rem, 2vw, 1.1rem);
                 margin-top: 20px;
                 opacity: .7;
-                letter-spacing: 2px
+                letter-spacing: 2px;
+                border-top: 1px solid rgba(0, 255, 0, 0.3);
+                padding-top: 15px;
+                display: inline-block;
+            }
+
+            .typing-effect {
+                overflow: hidden;
+                border-right: 2px solid #00ff00;
+                white-space: nowrap;
+                margin: 0 auto;
+                animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            }
+
+            @keyframes typing {
+                from {
+                    width: 0
+                }
+
+                to {
+                    width: 100%
+                }
+            }
+
+            @keyframes blink-caret {
+
+                from,
+                to {
+                    border-color: transparent
+                }
+
+                50% {
+                    border-color: #00ff00;
+                }
             }
 
             @media(max-width:768px) {
                 .domain {
-                    letter-spacing: 4px
+                    letter-spacing: 2px
                 }
 
                 .status {
@@ -710,7 +789,9 @@ function lumnav_mm_render_hightech_page()
             <div class="border-art">[ SYSTEM ]</div>
             <div class="domain"><?php echo esc_html($domain); ?></div>
             <div class="status"><span class="prompt">&gt;</span>MAINTENANCE MODE ACTIVE</div>
-            <div class="footer">Recalibrating systems...</div>
+            <div class="footer">
+                <div class="typing-effect">Recalibrating systems...</div>
+            </div>
         </div>
     </body>
 
@@ -770,12 +851,24 @@ function lumnav_mm_render_artistic_page()
                 padding: 20px
             }
 
-            . container {
+            .grain {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 3;
+                opacity: 0.05;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            }
+
+            .container {
                 perspective: 1200px
             }
 
             .domain-text {
-                font-size: clamp(3.5rem, 12vw, 9rem);
+                font-size: clamp(3rem, 10vw, 8rem);
                 font-weight: 900;
                 text-transform: lowercase;
                 letter-spacing: -2px;
@@ -833,11 +926,12 @@ function lumnav_mm_render_artistic_page()
 
             p {
                 font-size: clamp(1rem, 2.5vw, 1.3rem);
-                color: rgba(255, 255, 255, 0.7);
+                color: rgba(255, 255, 255, 0.8);
                 font-family: sans-serif;
                 font-weight: 300;
                 max-width: 600px;
-                animation: fadeIn 1.5s ease-out 0.5s both
+                animation: fadeIn 1.5s ease-out 0.5s both;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             }
 
             @keyframes fadeIn {
@@ -879,6 +973,7 @@ function lumnav_mm_render_artistic_page()
     </head>
 
     <body><canvas id="bg-canvas"></canvas>
+        <div class="grain"></div>
         <div class="content-wrapper">
             <div class="glow-ring"></div>
             <div class="container">
@@ -1039,15 +1134,15 @@ function lumnav_mm_render_glassmorphic_page()
             .card {
                 position: relative;
                 z-index: 3;
-                background: rgba(255, 255, 255, .1);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, .2);
-                border-radius: 24px;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 30px;
                 padding: 60px 80px;
                 max-width: 600px;
                 width: 90%;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .2);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
                 animation: cardEntrance 1s ease-out
             }
 
@@ -1306,7 +1401,7 @@ function lumnav_mm_render_neural_page()
     <body><canvas id="canvas"></canvas>
         <div class="content">
             <div
-                style="font-size:1.2rem;font-weight:600;margin-bottom:10px;color:rgba(102,126,234,0.8);text-transform:lowercase;letter-spacing:2px;">
+                style="font-size:clamp(1rem, 3vw, 1.4rem);font-weight:600;margin-bottom:10px;color:rgba(102,126,234,0.8);text-transform:lowercase;letter-spacing:2px;">
                 <?php echo esc_html($domain); ?>
             </div>
             <h1>Neural Network Recalibration</h1>
@@ -1427,8 +1522,13 @@ function lumnav_mm_render_liquid_page()
                 position: relative;
                 z-index: 2;
                 text-align: center;
-                padding: 20px;
-                max-width: 700px
+                padding: 40px;
+                max-width: 700px;
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 30px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             h1 {
@@ -1507,7 +1607,7 @@ function lumnav_mm_render_liquid_page()
         </div>
         <div class="content">
             <div
-                style="font-size:1.1rem;font-weight:700;margin-bottom:12px;background:linear-gradient(135deg,#667eea,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:lowercase;letter-spacing:1.5px;">
+                style="font-size:clamp(1rem, 3vw, 1.5rem);font-weight:700;margin-bottom:12px;background:linear-gradient(135deg,#667eea,#f093fb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:lowercase;letter-spacing:1.5px;">
                 <?php echo esc_html($domain); ?>
             </div>
             <h1>Transforming</h1>
@@ -1561,7 +1661,8 @@ function lumnav_mm_render_torus_page()
                 left: 0;
                 width: 100%;
                 height: 100%;
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .overlay {
@@ -1578,7 +1679,7 @@ function lumnav_mm_render_torus_page()
             }
 
             h1 {
-                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-size: clamp(2.5rem, 6vw, 4rem);
                 font-weight: 700;
                 margin-bottom: 15px;
                 letter-spacing: 2px;
@@ -1614,7 +1715,7 @@ function lumnav_mm_render_torus_page()
     <body><canvas id="canvas-3d"></canvas>
         <div class="overlay">
             <div
-                style="font-size:1rem;font-weight:500;margin-bottom:8px;color:rgba(168,237,234,0.9);text-transform:lowercase;letter-spacing:3px;">
+                style="font-size:clamp(1rem, 3vw, 1.4rem);font-weight:500;margin-bottom:8px;color:rgba(168,237,234,0.9);text-transform:lowercase;letter-spacing:3px;">
                 <?php echo esc_html($domain); ?>
             </div>
             <h1>Optimizing Systems</h1>
@@ -1685,10 +1786,11 @@ function lumnav_mm_render_kinetic_page()
 
             .title {
                 font-family: 'Bebas Neue', cursive;
-                font-size: clamp(4rem, 15vw, 12rem);
+                font-size: clamp(4rem, 12vw, 10rem);
                 line-height: .9;
                 margin-bottom: 30px;
-                overflow: hidden
+                overflow: hidden;
+                word-break: break-word;
             }
 
             .title .word {
@@ -1798,7 +1900,7 @@ function lumnav_mm_render_kinetic_page()
         <div class="bg-texture"></div>
         <div class="content">
             <div
-                style="font-size:1.3rem;font-weight:700;margin-bottom:20px;color:rgba(255,255,255,0.7);letter-spacing:5px;text-transform:uppercase;">
+                style="font-size:clamp(1.2rem, 4vw, 2rem);font-weight:700;margin-bottom:20px;color:rgba(255,255,255,0.7);letter-spacing:5px;text-transform:uppercase;">
                 <?php echo esc_html($domain); ?>
             </div>
             <div class="title">
@@ -1854,7 +1956,8 @@ function lumnav_mm_render_aurora_page()
                 left: 0;
                 width: 100%;
                 height: 100%;
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .content {
@@ -1903,7 +2006,7 @@ function lumnav_mm_render_aurora_page()
     <body><canvas id="canvas-aurora"></canvas>
         <div class="content">
             <div
-                style="font-size:1.1rem;font-weight:500;margin-bottom:15px;color:rgba(100,255,200,0.8);text-shadow:0 0 10px rgba(100,255,200,0.3);text-transform:lowercase;letter-spacing:2px;">
+                style="font-size:clamp(1rem, 3vw, 1.4rem);font-weight:500;margin-bottom:15px;color:rgba(100,255,200,0.8);text-shadow:0 0 10px rgba(100,255,200,0.3);text-transform:lowercase;letter-spacing:2px;">
                 <?php echo esc_html($domain); ?>
             </div>
             <h1>Serene Maintenance</h1>
@@ -1986,7 +2089,8 @@ function lumnav_mm_render_holographic_page()
                 width: 100%;
                 height: 100%;
                 background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 255, 255, .03) 40px, rgba(0, 255, 255, .03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 255, 255, .03) 40px, rgba(0, 255, 255, .03) 41px);
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .scanline {
@@ -1998,7 +2102,8 @@ function lumnav_mm_render_holographic_page()
                 background: linear-gradient(90deg, transparent, #0ff, transparent);
                 box-shadow: 0 0 10px #0ff;
                 animation: scan 4s linear infinite;
-                z-index: 3
+                z-index: 3;
+                pointer-events: none;
             }
 
             @keyframes scan {
@@ -2019,7 +2124,7 @@ function lumnav_mm_render_holographic_page()
             }
 
             h1 {
-                font-size: clamp(2.5rem, 7vw, 5rem);
+                font-size: clamp(2rem, 6vw, 4.5rem);
                 font-weight: 900;
                 margin-bottom: 30px;
                 text-transform: uppercase;
@@ -2119,7 +2224,7 @@ function lumnav_mm_render_holographic_page()
         <div class="scanline"></div>
         <div class="content">
             <div
-                style="font-size:1.2rem;font-weight:700;margin-bottom:20px;color:#0ff;text-shadow:0 0 5px #0ff;letter-spacing:5px;text-transform:uppercase;">
+                style="font-size:clamp(1rem, 3vw, 1.4rem);font-weight:700;margin-bottom:20px;color:#0ff;text-shadow:0 0 5px #0ff;letter-spacing:5px;text-transform:uppercase;">
                 <?php echo esc_html($domain); ?>
             </div>
             <h1>MAINTENANCE</h1>
@@ -2173,7 +2278,8 @@ function lumnav_mm_render_neon_page()
                 width: 100%;
                 height: 200px;
                 background: linear-gradient(to bottom, transparent, #0a0a0f 80%), repeating-linear-gradient(90deg, #1a1a2e 0px, #1a1a2e 50px, #16162a 50px, #16162a 100px);
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .neon-container {
@@ -2184,7 +2290,7 @@ function lumnav_mm_render_neon_page()
             }
 
             .domain {
-                font-size: clamp(4rem, 15vw, 10rem);
+                font-size: clamp(3rem, 12vw, 8rem);
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 8px;
@@ -2343,13 +2449,26 @@ function lumnav_mm_render_swiss_page()
             }
 
             .domain {
-                font-size: clamp(4.5rem, 12vw, 11rem);
+                font-size: clamp(3.5rem, 10vw, 9rem);
                 font-weight: 700;
                 line-height: 0.9;
                 letter-spacing: -0.04em;
                 margin: 60px 0 40px 0;
                 text-transform: lowercase;
-                word-break: break-word
+                word-break: break-word;
+                animation: slideInLeft 1s ease-out;
+            }
+
+            @keyframes slideInLeft {
+                from {
+                    transform: translateX(-50px);
+                    opacity: 0;
+                }
+
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
             }
 
             .grid-numbers {
@@ -2546,7 +2665,7 @@ function lumnav_mm_render_vhs_page()
             }
 
             .domain {
-                font-size: clamp(3.5rem, 10vw, 8rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 letter-spacing: 8px;
                 line-height: 1.2;
                 margin-bottom: 25px;
@@ -2686,7 +2805,7 @@ function lumnav_mm_render_brutalist_page()
             }
 
             .domain {
-                font-size: clamp(5rem, 15vw, 12rem);
+                font-size: clamp(4rem, 12vw, 10rem);
                 font-weight: 900;
                 line-height: 0.85;
                 letter-spacing: -0.05em;
@@ -2785,7 +2904,8 @@ function lumnav_mm_render_galaxy_page()
                 position: fixed;
                 width: 100%;
                 height: 100%;
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .star {
@@ -2858,7 +2978,7 @@ function lumnav_mm_render_galaxy_page()
             }
 
             .domain {
-                font-size: clamp(3.5rem, 10vw, 8rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 font-weight: 700;
                 background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #4facfe);
                 -webkit-background-clip: text;
@@ -2992,7 +3112,8 @@ function lumnav_mm_render_matrix_page()
                 width: 100%;
                 height: 100%;
                 z-index: 1;
-                opacity: 0.3
+                opacity: 0.3;
+                pointer-events: none;
             }
 
             .content {
@@ -3008,7 +3129,7 @@ function lumnav_mm_render_matrix_page()
             }
 
             .domain {
-                font-size: clamp(3rem, 9vw, 7rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 font-weight: 700;
                 color: #0f0;
                 text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
@@ -3132,7 +3253,8 @@ function lumnav_mm_render_vaporwave_page()
                 background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%), repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0.1) 2px, transparent 2px, transparent 50px), repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0.1) 2px, transparent 2px, transparent 50px);
                 transform: perspective(500px) rotateX(60deg);
                 transform-origin: bottom;
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .content {
@@ -3143,7 +3265,7 @@ function lumnav_mm_render_vaporwave_page()
             }
 
             .domain {
-                font-size: clamp(3.5rem, 11vw, 9rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 15px;
@@ -3190,7 +3312,8 @@ function lumnav_mm_render_vaporwave_page()
                 border-radius: 50%;
                 box-shadow: 0 0 60px rgba(255, 110, 199, 0.6);
                 z-index: 0;
-                Animation: pulse 4s ease-in-out infinite
+                Animation: pulse 4s ease-in-out infinite;
+                pointer-events: none;
             }
 
             @keyframes pulse {
@@ -3265,7 +3388,8 @@ function lumnav_mm_render_particles_page()
                 left: 0;
                 width: 100%;
                 height: 100%;
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .content {
@@ -3281,7 +3405,7 @@ function lumnav_mm_render_particles_page()
             }
 
             .domain {
-                font-size: clamp(3.5rem, 10vw, 8rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 font-weight: 900;
                 background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
                 -webkit-background-clip: text;
@@ -3405,7 +3529,8 @@ function lumnav_mm_render_geometric_page()
                 position: fixed;
                 width: 100%;
                 height: 100%;
-                z-index: 1
+                z-index: 1;
+                pointer-events: none;
             }
 
             .pattern svg {
@@ -3427,7 +3552,7 @@ function lumnav_mm_render_geometric_page()
             }
 
             .domain {
-                font-size: clamp(3.5rem, 10vw, 8rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 font-weight: 800;
                 color: #2d2d2d;
                 margin-bottom: 25px;
@@ -3458,7 +3583,8 @@ function lumnav_mm_render_geometric_page()
                 position: fixed;
                 width: 100%;
                 height: 100%;
-                z-index: 0
+                z-index: 0;
+                pointer-events: none;
             }
 
             .shape {
@@ -3635,7 +3761,7 @@ function lumnav_mm_render_glitch_page()
             }
 
             .domain {
-                font-size: clamp(3rem, 9vw, 7rem);
+                font-size: clamp(2.5rem, 8vw, 6rem);
                 font-weight: 700;
                 margin-bottom: 30px;
                 text-transform: uppercase;
@@ -3819,458 +3945,75 @@ function lumnav_mm_admin_and_settings_styles()
         }
     </style>
     <?php
-    $screen = get_current_screen();
-    if ($screen && $screen->id === 'settings_page_lumnav-maintenance-mode') {
-        ?>
-        <style>
-            .lumnav-mm-style-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 20px;
-                margin-top: 20px;
-            }
-
-            .lumnav-mm-style-card {
-                position: relative;
-                display: block;
-                cursor: pointer;
-            }
-
-            .lumnav-mm-style-card input[type="radio"] {
-                position: absolute;
-                opacity: 0;
-                width: 1px;
-                height: 1px;
-            }
-
-            .lumnav-mm-style-card .preview-container {
-                border: 2px solid #ddd;
-                border-radius: 8px;
-                overflow: hidden;
-                transition: all 0.2s ease-in-out;
-            }
-
-            .lumnav-mm-style-card input[type="radio"]:checked+.preview-container {
-                border-color: #2271b1;
-                box-shadow: 0 0 0 1px #2271b1;
-            }
-
-            .lumnav-mm-style-card .preview {
-                height: 150px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-family: sans-serif;
-                padding: 15px;
-            }
-
-            .lumnav-mm-style-card .card-title {
-                background-color: #f0f0f1;
-                padding: 10px 15px;
-                font-weight: 600;
-                border-top: 1px solid #ddd;
-            }
-
-            /* Simple Preview */
-            .simple-preview {
-                background-color: #f1f1f1;
-                color: #444;
-            }
-
-            .simple-preview .simple-box {
-                text-align: center;
-            }
-
-            .simple-preview h3 {
-                font-size: 1.2em;
-                margin: 0 0 5px;
-            }
-
-            .simple-preview p {
-                font-size: 0.9em;
-                margin: 0;
-            }
-
-            /* High-Tech Preview */
-            .hightech-preview {
-                background-color: #0a0a0a;
-                color: #00ff00;
-                font-family: 'Courier New', Courier, monospace;
-                border: 1px solid #00ff00;
-            }
-
-            .hightech-preview .hightech-box {
-                text-align: left;
-            }
-
-            .hightech-preview h3 {
-                font-size: 1em;
-                margin: 0 0 5px;
-            }
-
-            .hightech-preview p {
-                font-size: 0.9em;
-                margin: 0;
-            }
-
-            /* Artistic Preview */
-            .artistic-preview {
-                background-color: #1a1a1a;
-            }
-
-            .artistic-preview .artistic-box {
-                font-size: 1.5em;
-                font-weight: bold;
-                background: linear-gradient(90deg, #ff8a00, #e52e71);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                text-fill-color: transparent;
-            }
-
-            /* Glassmorphic Preview */
-            .glassmorphic-preview {
-                background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-                background-size: 200% 200%;
-                animation: gradientShift 3s ease infinite;
-            }
-
-            .glassmorphic-preview .glass-card {
-                background: rgba(255, 255, 255, 0.2);
-                backdrop-filter: blur(10px);
-                padding: 15px 25px;
-                border-radius: 15px;
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                color: #fff;
-                font-weight: 600;
-            }
-
-            /* Neural Preview */
-            .neural-preview {
-                background: #0a0e27;
-                color: #667eea;
-            }
-
-            .neural-preview .neural-dots {
-                font-size: 2em;
-                letter-spacing: 10px;
-                animation: pulse 2s ease-in-out infinite;
-            }
-
-            /* Liquid Preview */
-            .liquid-preview {
-                background: #0f0817;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .liquid-preview .liquid-blob {
-                width: 100px;
-                height: 100px;
-                background: linear-gradient(45deg, #667eea, #f093fb);
-                border-radius: 40% 60% 70% 30%/40% 50% 60% 50%;
-                filter: blur(20px);
-                opacity: 0.6;
-                animation: morph 5s ease-in-out infinite;
-            }
-
-            /* Torus Preview */
-            .torus-preview {
-                background: #000;
-                color: #a8edea;
-            }
-
-            .torus-preview .torus-icon {
-                font-size: 4em;
-                animation: spin 3s linear infinite;
-            }
-
-            /* Kinetic Preview */
-            .kinetic-preview {
-                background: #1a1a1a;
-                color: #fff;
-            }
-
-            .kinetic-preview .kinetic-text {
-                font-size: 2.5em;
-                font-weight: 900;
-                letter-spacing: 5px;
-                font-family: 'Arial Black', sans-serif;
-            }
-
-            /* Aurora Preview */
-            .aurora-preview {
-                background: linear-gradient(180deg, #000a1f 0%, #001f3f 100%);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .aurora-preview .aurora-waves {
-                font-size: 3em;
-                color: #00ff88;
-                text-shadow: 0 0 20px #00ff88;
-                animation: wave 2s ease-in-out infinite;
-            }
-
-            /* Holographic Preview */
-            .holographic-preview {
-                background: #000;
-                background-image: repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(0, 255, 255, 0.03) 20px, rgba(0, 255, 255, 0.03) 21px);
-            }
-
-            .holographic-preview .holo-text {
-                font-size: 2em;
-                font-weight: 900;
-                color: #0ff;
-                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-                letter-spacing: 5px;
-                font-family: 'Courier New', monospace;
-            }
-
-            /* Neon Cyberpunk Preview */
-            .neon-preview {
-                background: #0a0a0f;
-                border: 2px solid #ff006e;
-            }
-
-            .neon-preview .neon-text {
-                font-size: 2em;
-                font-weight: 700;
-                color: #fff;
-                text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 40px #ff006e;
-                animation: neonFlicker 2s infinite;
-            }
-
-            @keyframes neonFlicker {
-
-                0%,
-                100% {
-                    text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e, 0 0 40px #ff006e;
+    if (function_exists('get_current_screen')) {
+        $screen = get_current_screen();
+        if ($screen && $screen->id === 'settings_page_lumnav-maintenance-mode') {
+            ?>
+            <style>
+                .lumnav-mm-style-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                    gap: 20px;
+                    margin-top: 20px;
                 }
 
-                50% {
-                    text-shadow: 0 0 5px #ff006e, 0 0 10px #ff006e;
-                }
-            }
-
-            /* Minimalist Swiss Preview */
-            .swiss-preview {
-                background: #fff;
-                border-left: 3px solid #ff0000;
-            }
-
-            .swiss-preview .swiss-text {
-                font-size: 2.5em;
-                font-weight: 700;
-                color: #000;
-                font-family: 'Helvetica Neue', Arial, sans-serif;
-                letter-spacing: -2px;
-            }
-
-            /* Retro VHS Preview */
-            .vhs-preview {
-                background: #000;
-                border: 3px solid #fff;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .vhs-preview::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
-            }
-
-            .vhs-preview .vhs-text {
-                font-size: 2em;
-                font-weight: 700;
-                color: #ffd700;
-                font-family: 'Courier New', monospace;
-                position: relative;
-                z-index: 2;
-            }
-
-            /* Brutalist Preview */
-            .brutalist-preview {
-                background: #fff;
-            }
-
-            .brutalist-preview .brutalist-text {
-                font-size: 2.2em;
-                font-weight: 900;
-                color: #000;
-                text-shadow: 4px 4px 0 #000;
-                font-family: Arial, sans-serif;
-            }
-
-            /* Galaxy Preview */
-            .galaxy-preview {
-                background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-            }
-
-            .galaxy-preview .galaxy-text {
-                font-size: 2em;
-                font-weight: 700;
-                background: linear-gradient(135deg, #fff, #f093fb, #4facfe);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            /* Matrix Preview */
-            .matrix-preview {
-                background: #000;
-            }
-
-            .matrix-preview .matrix-text {
-                font-size: 2em;
-                font-weight: 700;
-                color: #0f0;
-                text-shadow: 0 0 10px #0f0;
-                font-family: 'Courier New', monospace;
-            }
-
-            /* Vaporwave Preview */
-            .vaporwave-preview {
-                background: linear-gradient(180deg, #ff6ec7, #7873f5, #4facfe);
-            }
-
-            .vaporwave-preview .vaporwave-text {
-                font-size: 2em;
-                font-weight: 700;
-                color: #fff;
-                text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
-                letter-spacing: 8px;
-            }
-
-            /* Particle Explosion Preview */
-            .particles-preview {
-                background: #1a1a2e;
-            }
-
-            .particles-preview .particles-text {
-                font-size: 1.8em;
-                font-weight: 900;
-                background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            /* Geometric Preview */
-            .geometric-preview {
-                background: #f5f5f5;
-                border: 2px solid #667eea;
-            }
-
-            .geometric-preview .geometric-text {
-                font-size: 2.5em;
-                font-weight: 800;
-                color: #2d2d2d;
-            }
-
-            /* Glitch Preview */
-            .glitch-preview {
-                background: #000;
-            }
-
-            .glitch-preview .glitch-text {
-                font-size: 2em;
-                font-weight: 700;
-                color: #fff;
-                animation: glitchPreview 3s infinite;
-            }
-
-            @keyframes glitchPreview {
-
-                0%,
-                90%,
-                100% {
-                    color: #fff;
-                    transform: translate(0);
+                .lumnav-mm-style-card {
+                    position: relative;
+                    display: block;
+                    cursor: pointer;
                 }
 
-                92% {
-                    color: #f0f;
-                    transform: translate(-2px, 2px);
+                .lumnav-mm-style-card input[type="radio"] {
+                    position: absolute;
+                    opacity: 0;
+                    width: 1px;
+                    height: 1px;
                 }
 
-                94% {
-                    color: #0ff;
-                    transform: translate(2px, -2px);
-                }
-            }
-
-            @keyframes gradientShift {
-                0% {
-                    background-position: 0% 50%;
+                .lumnav-mm-style-card .preview-container {
+                    border: 2px solid #ddd;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    transition: all 0.2s ease-in-out;
                 }
 
-                50% {
-                    background-position: 100% 50%;
+                .lumnav-mm-style-card input[type="radio"]:checked+.preview-container {
+                    border-color: #2271b1;
+                    box-shadow: 0 0 0 1px #2271b1;
                 }
 
-                100% {
-                    background-position: 0% 50%;
-                }
-            }
-
-            @keyframes pulse {
-
-                0%,
-                100% {
-                    opacity: 1;
+                .lumnav-mm-style-card .preview-iframe-wrapper {
+                    height: 200px;
+                    /* Taller for better preview */
+                    width: 100%;
+                    position: relative;
+                    overflow: hidden;
+                    background-color: #f0f0f1;
                 }
 
-                50% {
-                    opacity: 0.5;
-                }
-            }
-
-            @keyframes morph {
-
-                0%,
-                100% {
-                    border-radius: 40% 60% 70% 30%/40% 50% 60% 50%;
-                }
-
-                50% {
-                    border-radius: 70% 30% 40% 60%/50% 60% 40% 50%;
-                }
-            }
-
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
+                .lumnav-mm-style-card .preview-iframe-wrapper iframe {
+                    width: 400%;
+                    height: 400%;
+                    border: 0;
+                    transform: scale(0.25);
+                    transform-origin: 0 0;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    pointer-events: none;
+                    /* Prevent interaction with preview */
+                    background-color: #fff;
                 }
 
-                100% {
-                    transform: rotate(360deg);
+                /* Responsive grid adjustments */
+                @media (min-width: 1400px) {
+                    .lumnav-mm-style-grid {
+                        grid-template-columns: repeat(4, 1fr);
+                    }
                 }
-            }
-
-            @keyframes wave {
-
-                0%,
-                100% {
-                    transform: translateY(0);
-                }
-
-                50% {
-                    transform: translateY(-10px);
-                }
-            }
-
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            }
-        </style>
-        <?php
+            </style>
+            <?php
+        }
     }
 }
 add_action('wp_head', 'lumnav_mm_admin_and_settings_styles');
