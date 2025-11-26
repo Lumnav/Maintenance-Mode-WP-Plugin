@@ -83,17 +83,21 @@ class GitHub_Updater
 
         $this->get_repository_info();
 
-        if ($this->github_response === false) {
+        if ($this->github_response === false || !isset($this->github_response->tag_name)) {
             return $transient;
         }
 
-        $out_of_date = version_compare($this->github_response->tag_name, $this->plugin['Version'], 'gt');
+        // Strip 'v' prefix from tag if present (e.g., v1.0.1 -> 1.0.1)
+        $github_version = ltrim($this->github_response->tag_name, 'v');
+        $current_version = $this->plugin['Version'];
+
+        $out_of_date = version_compare($github_version, $current_version, 'gt');
 
         if ($out_of_date) {
             $plugin = array(
                 'slug' => current(explode('/', $this->basename)),
                 'plugin' => $this->basename,
-                'new_version' => $this->github_response->tag_name,
+                'new_version' => $github_version,
                 'url' => $this->plugin['PluginURI'],
                 'package' => $this->github_response->zipball_url,
             );
@@ -117,14 +121,17 @@ class GitHub_Updater
             if ($args->slug == current(explode('/', $this->basename))) {
                 $this->get_repository_info();
 
-                if ($this->github_response === false) {
+                if ($this->github_response === false || !isset($this->github_response->tag_name)) {
                     return $result;
                 }
+
+                // Strip 'v' prefix from tag if present
+                $github_version = ltrim($this->github_response->tag_name, 'v');
 
                 $plugin = array(
                     'name' => $this->plugin['Name'],
                     'slug' => $this->basename,
-                    'version' => $this->github_response->tag_name,
+                    'version' => $github_version,
                     'author' => $this->plugin['AuthorName'],
                     'author_profile' => $this->plugin['AuthorURI'],
                     'last_updated' => $this->github_response->published_at,
