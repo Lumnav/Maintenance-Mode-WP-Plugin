@@ -112,7 +112,7 @@ class GitHub_Updater
                 'url' => $this->plugin['PluginURI'],
                 'package' => $this->github_response->zipball_url,
                 'requires' => '5.0',
-                'tested' => '6.8',
+                'tested' => '6.8.3',
                 'requires_php' => '7.0',
             );
 
@@ -163,7 +163,7 @@ class GitHub_Updater
                     ),
                     'download_link' => $this->github_response->zipball_url,
                     'requires' => '5.0',
-                    'tested' => '6.7',
+                    'tested' => '6.8.3',
                     'requires_php' => '7.0',
                 );
 
