@@ -234,6 +234,14 @@ class GitHub_Updater
             activate_plugin($this->basename);
         }
 
+        // CRITICAL FIX: Reload plugin data from the new file
+        // This ensures that subsequent calls to modify_transient in this same request
+        // see the NEW version (e.g., 1.0.7) instead of the old one (1.0.6) cached in memory.
+        if (file_exists($this->file)) {
+            $this->plugin = get_plugin_data($this->file);
+            $this->log("Reloaded plugin data. New version in memory: " . $this->plugin['Version']);
+        }
+
         $this->log("Update completed successfully");
 
         return $result;
