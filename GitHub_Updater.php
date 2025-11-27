@@ -6,7 +6,7 @@
  * Checks for new releases and integrates with WordPress's native update system.
  * 
  * @author Lumnav
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 if (!defined('ABSPATH')) {
