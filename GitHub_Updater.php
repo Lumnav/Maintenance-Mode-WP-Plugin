@@ -6,7 +6,7 @@
  * Checks for new releases and integrates with WordPress's native update system.
  * 
  * @author Lumnav
- * @version 1.0.11
+ * @version 1.0.12
  */
 
 if (!defined('ABSPATH')) {
@@ -39,6 +39,20 @@ class GitHub_Updater
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
         $this->plugin = get_plugin_data($this->file);
+
+        // Explicitly fetch headers that might be missing from get_plugin_data
+        $extra_headers = get_file_data($this->file, array(
+            'TestedUpTo' => 'Tested up to',
+            'RequiresWP' => 'Requires at least',
+            'RequiresPHP' => 'Requires PHP',
+        ));
+
+        // Merge extra headers, prioritizing existing non-empty values
+        foreach ($extra_headers as $key => $value) {
+            if (empty($this->plugin[$key]) && !empty($value)) {
+                $this->plugin[$key] = $value;
+            }
+        }
         $this->basename = plugin_basename($this->file);
         $this->active = is_plugin_active($this->basename);
         $this->username = $username;
