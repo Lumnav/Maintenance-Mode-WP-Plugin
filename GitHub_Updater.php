@@ -53,6 +53,10 @@ class GitHub_Updater
                 $this->plugin[$key] = $value;
             }
         }
+
+        // DEBUG: Log the plugin data to a file
+        file_put_contents(dirname($this->file) . '/debug.log', print_r($this->plugin, true), FILE_APPEND);
+
         $this->basename = plugin_basename($this->file);
         $this->active = is_plugin_active($this->basename);
         $this->username = $username;
