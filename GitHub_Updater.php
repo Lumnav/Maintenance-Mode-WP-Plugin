@@ -6,7 +6,7 @@
  * Checks for new releases and integrates with WordPress's native update system.
  * 
  * @author Lumnav
- * @version 1.0.10
+ * @version 1.0.11
  */
 
 if (!defined('ABSPATH')) {
@@ -35,6 +35,9 @@ class GitHub_Updater
     public function __construct($file, $username, $repository, $authorize_token = '')
     {
         $this->file = $file;
+        if (!function_exists('get_plugin_data')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
         $this->plugin = get_plugin_data($this->file);
         $this->basename = plugin_basename($this->file);
         $this->active = is_plugin_active($this->basename);
@@ -111,9 +114,9 @@ class GitHub_Updater
                 'new_version' => $github_version,
                 'url' => $this->plugin['PluginURI'],
                 'package' => $this->github_response->zipball_url,
-                'requires' => '5.0',
-                'tested' => '6.8.3',
-                'requires_php' => '7.0',
+                'requires' => $this->plugin['RequiresWP'],
+                'tested' => $this->plugin['TestedUpTo'],
+                'requires_php' => $this->plugin['RequiresPHP'],
             );
 
             $transient->response[$this->basename] = (object) $plugin;
@@ -162,9 +165,9 @@ class GitHub_Updater
                         'Updates' => $this->github_response->body,
                     ),
                     'download_link' => $this->github_response->zipball_url,
-                    'requires' => '5.0',
-                    'tested' => '6.8.3',
-                    'requires_php' => '7.0',
+                    'requires' => $this->plugin['RequiresWP'],
+                    'tested' => $this->plugin['TestedUpTo'],
+                    'requires_php' => $this->plugin['RequiresPHP'],
                 );
 
                 return (object) $plugin;
