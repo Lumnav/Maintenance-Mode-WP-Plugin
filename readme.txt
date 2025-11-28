@@ -4,7 +4,7 @@ Tags: maintenance, coming soon, landing page
 Requires at least: 5.0
 Tested up to: 6.8.3
 Requires PHP: 7.0
-Stable tag: 1.0.17
+Stable tag: 1.0.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,9 @@ A landing page plugin with a simple on/off toggle in the admin bar.
 3. Use the toggle in the admin bar to enable/disable maintenance mode.
 
 == Changelog ==
+
+= 1.0.18 =
+* Updated compatibility status.
 
 = 1.0.17 =
 * Updated compatibility status.
