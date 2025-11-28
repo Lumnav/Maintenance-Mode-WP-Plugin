@@ -2,9 +2,9 @@
 Contributors: Lumnav
 Tags: maintenance, coming soon, landing page
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 6.8.3
 Requires PHP: 7.0
-Stable tag: 1.0.16
+Stable tag: 1.0.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,19 @@ A landing page plugin with a simple on/off toggle in the admin bar.
 
 == Changelog ==
 
+= 1.0.17 =
+* Updated compatibility status.
+
+= 1.0.16 =
+* Updated compatibility status.
+
+= 1.0.15 =
+* Updated compatibility status.
+
 = 1.0.14 =
+* Updated compatibility status.
+
+= 1.0.13 =
 * Updated compatibility status.
 
 = 1.0.12 =

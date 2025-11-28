@@ -5,6 +5,7 @@
  * Enables automatic updates for WordPress plugins hosted on GitHub.
  * Checks for new releases and integrates with WordPress's native update system.
  * 
+ * @package Landing_Pages
  * @author Lumnav
  * @version 1.0.16
  */
@@ -13,7 +14,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class GitHub_Updater
+class Lumnav_GitHub_Updater
 {
     private $file;
     private $plugin;
@@ -235,7 +236,7 @@ class GitHub_Updater
 
         $this->log("Starting after_install hook");
 
-        // Get the plugin directory name (e.g., "Maintenance Mode")
+        // Get the plugin directory name
         $plugin_dir = dirname($this->file);
         $plugin_folder = basename($plugin_dir);
 
@@ -260,7 +261,7 @@ class GitHub_Updater
         if (function_exists('opcache_invalidate')) {
             $this->log("Invalidating OPCache for " . $this->file);
             opcache_invalidate($this->file, true);
-            opcache_invalidate($proper_destination . '/index.php', true);
+            opcache_invalidate($proper_destination . '/landing-pages.php', true);
         }
 
         // Clear all plugin-related caches
@@ -286,9 +287,7 @@ class GitHub_Updater
             activate_plugin($this->basename);
         }
 
-        // CRITICAL FIX: Reload plugin data from the new file
-        // This ensures that subsequent calls to modify_transient in this same request
-        // see the NEW version (e.g., 1.0.7) instead of the old one (1.0.6) cached in memory.
+        // Reload plugin data from the new file
         if (file_exists($this->file)) {
             $this->plugin = get_plugin_data($this->file);
             $this->log("Reloaded plugin data. New version in memory: " . $this->plugin['Version']);

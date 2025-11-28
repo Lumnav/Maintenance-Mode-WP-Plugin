@@ -1,0 +1,118 @@
+/**
+ * Admin Styles for Landing Pages Plugin
+ * Settings page styling
+ */
+
+.lumnav-mm-style-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.lumnav-mm-style-grid label {
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+
+.lumnav-mm-style-grid input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.lumnav-mm-style-grid .preview-container {
+    border: 3px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.lumnav-mm-style-grid .preview-container:hover {
+    border-color: #2271b1;
+    box-shadow: 0 4px 16px rgba(34, 113, 177, 0.15);
+    transform: translateY(-2px);
+}
+
+.lumnav-mm-style-grid input[type="radio"]:checked + .preview-container {
+    border-color: #2271b1;
+    box-shadow: 0 4px 20px rgba(34, 113, 177, 0.25);
+}
+
+.lumnav-mm-style-grid input[type="radio"]:checked + .preview-container::before {
+    content: "✓";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #2271b1;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lumnav-mm-style-grid .preview-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.67%;
+    /* 3:2 aspect ratio */
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.lumnav-mm-style-grid iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    transform-origin: top left;
+}
+
+.lumnav-mm-style-grid .card-title {
+    padding: 15px;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    background: #f9f9f9;
+    border-top: 1px solid #eee;
+    color: #333;
+}
+
+.lumnav-mm-style-grid input[type="radio"]:checked + .preview-container .card-title {
+    background: #2271b1;
+    color: #fff;
+    border-top-color: #2271b1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 782px) {
+    .lumnav-mm-style-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+
+    .lumnav-mm-style-grid .card-title {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lumnav-mm-style-grid {
+        grid-template-columns: 1fr;
+    }
+}
