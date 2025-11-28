@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Plugin Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f0f0f0;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #loading.hidden {
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 115, 170, 0.1);
+            border-left-color: #0073aa;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #playground-container {
+            width: 100%;
+            height: 100vh;
+            display: none;
+        }
+
+        #playground-container.visible {
+            display: block;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>Loading WordPress Playground...</p>
+    </div>
+    <div id="playground-container">
+        <iframe id="wp-playground"></iframe>
+    </div>
+
+    <script type="module">
+        import { startPlaygroundWeb } from 'https://unpkg.com/@wp-playground/client/index.js';
+
+        async function initPlayground() {
+            const iframe = document.getElementById('wp-playground');
+            const loading = document.getElementById('loading');
+            const container = document.getElementById('playground-container');
+
+            try {
+                // Start the WordPress Playground
+                const client = await startPlaygroundWeb({
+                    iframe,
+                    remoteUrl: 'https://playground.wordpress.net/remote.html',
+                    blueprint: {
+                        landingPage: '/wp-admin/plugins.php',
+                        preferredVersions: {
+                            php: '8.0',
+                            wp: 'latest'
+                        },
+                        steps: [
+                            {
+                                step: 'login',
+                                username: 'admin',
+                                password: 'password'
+                            }
+                        ]
+                    }
+                });
+
+                const ensuredDirs = new Set();
+                const ensureDir = async (dirPath) => {
+                    if (!dirPath || ensuredDirs.has(dirPath)) return;
+                    const parentDir = dirPath.split('/').slice(0, -1).join('/');
+                    if (parentDir) {
+                        await ensureDir(parentDir);
+                    }
+                    try {
+                        await client.mkdir(dirPath);
+                    } catch {
+                        // Directory may already exist
+                    }
+                    ensuredDirs.add(dirPath);
+                };
+
+                const pluginPath = '/wordpress/wp-content/plugins/lumnav-plugin';
+                await ensureDir(pluginPath);
+
+                // 1. Load text files (PHP, CSS, JSON, HTML, etc.)
+                const textModules = import.meta.glob(
+                    [
+                        "./**/*.php",
+                        "./**/*.css",
+                        "./**/*.js",
+                        "./**/*.jsx",
+                        "./**/*.ts",
+                        "./**/*.tsx",
+                        "./**/*.json",
+                        "./**/*.html",
+                        "./**/*.md",
+                        "./**/*.txt",
+                        "!./wordpress-stubs.php",
+                        "!./package.json",
+                        "!./pnpm-lock.yaml",
+                        "!./package-lock.json",
+                        "!./yarn.lock",
+                        "!./**/*.lock",
+                    ],
+                    { query: "?raw", import: "default", eager: true },
+                );
+
+                // 2. Load binary files (Images, Fonts)
+                const binaryModules = import.meta.glob(
+                    [
+                        "./**/*.png",
+                        "./**/*.jpg",
+                        "./**/*.jpeg",
+                        "./**/*.gif",
+                        "./**/*.svg",
+                        "./**/*.webp",
+                        "./**/*.woff",
+                        "./**/*.woff2",
+                        "./**/*.ttf",
+                        "./**/*.eot",
+                        "./**/*.otf",
+                        "./**/*.ico"
+                    ],
+                    { query: "?url", import: "default", eager: true },
+                );
+
+                // Helper to write files
+                const writeFiles = async (modules, isBinary) => {
+                    for (const [path, content] of Object.entries(modules)) {
+                        const file = path.replace(/^.\//, "");
+                        const targetPath = `${pluginPath}/${file}`;
+                        const dirPath = targetPath.split('/').slice(0, -1).join('/');
+
+                        if (dirPath) {
+                            await ensureDir(dirPath);
+                        }
+
+                        if (isBinary) {
+                            // For binaries, 'content' is a URL. Fetch it as a blob/buffer.
+                            try {
+                                const response = await fetch(content);
+                                if (!response.ok) throw new Error(`Failed to fetch ${content}`);
+                                const buffer = await response.arrayBuffer();
+                                await client.writeFile(targetPath, new Uint8Array(buffer));
+                            } catch (e) {
+                                console.error(`Failed to load binary file ${file}:`, e);
+                            }
+                        } else {
+                            // For text, 'content' is the string content
+                            await client.writeFile(targetPath, content);
+                        }
+                    }
+                };
+
+                await writeFiles(textModules, false);
+                await writeFiles(binaryModules, true);
+
+                // Enable debugging
+                await client.run({
+                    code: `<?php
+                        $config_path = '/wordpress/wp-config.php';
+                        $config = file_get_contents($config_path);
+                        $config = str_replace("define( 'WP_DEBUG', false );", "define( 'WP_DEBUG', true );\ndefine( 'WP_DEBUG_LOG', true );\ndefine( 'WP_DEBUG_DISPLAY', true );", $config);
+                        file_put_contents($config_path, $config);
+                    `
+                });
+
+                // Activate the plugin
+                const result = await client.run({
+                    code: `<?php
+                        // Register a shutdown function to catch fatal errors
+                        register_shutdown_function(function() {
+                            $error = error_get_last();
+                            if ($error && ($error['type'] === E_ERROR || $error['type'] === E_PARSE || $error['type'] === E_COMPILE_ERROR)) {
+                                echo "FATAL ERROR: " . $error['message'] . " in " . $error['file'] . " on line " . $error['line'];
+                            }
+                        });
+
+                        require '/wordpress/wp-load.php';
+                        
+                        try {
+                            // Dynamic plugin detection
+                            $plugin_dir = '/wordpress/wp-content/plugins/lumnav-plugin';
+                            $files = scandir($plugin_dir);
+                            $plugin_file = null;
+
+                            foreach ($files as $file) {
+                                if (pathinfo($file, PATHINFO_EXTENSION) === 'php') {
+                                    $content = file_get_contents($plugin_dir . '/' . $file);
+                                    if (strpos($content, 'Plugin Name:') !== false) {
+                                        $plugin_file = $file;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (!$plugin_file) {
+                                // Fallback to index.php if no header found, though this shouldn't happen in a valid plugin
+                                if (file_exists($plugin_dir . '/index.php')) {
+                                    $plugin_file = 'index.php';
+                                } else {
+                                    throw new Exception('No valid WordPress plugin file found in ' . $plugin_dir);
+                                }
+                            }
+
+                            $result = activate_plugin('lumnav-plugin/' . $plugin_file);
+                            if (is_wp_error($result)) {
+                                echo 'Error activating plugin: ' . $result->get_error_message();
+                            } else {
+                                echo 'Plugin activated successfully: ' . $plugin_file;
+                            }
+                        } catch (Throwable $e) {
+                            echo 'Exception during activation: ' . $e->getMessage();
+                        }
+                    `
+                });
+                console.log('Activation output:', result.text);
+
+                // Show the playground
+                loading.classList.add('hidden');
+                container.classList.add('visible');
+            } catch (error) {
+                console.error('Failed to initialize WordPress Playground:', error);
+                loading.innerHTML = `
+                    <div style="color: red; text-align: center; padding: 2rem;">
+                        <h2>Failed to load WordPress Playground</h2>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        initPlayground();
+    </script>
+</body>
+
+</html>
